@@ -1,7 +1,7 @@
 
 import innexiaBot.Database.blacklistusers_sql as sql
 from innexiaBot import ALLOW_EXCL
-from innexiaBot import DEV_USERS, SUDOERS as INSPECTOR, GBANNERS as REQUESTER
+from innexiaBot import DEV_USERS, SUDOERS, GBANNERS 
 from itertools import chain
 from telegram import Update
 from telegram.ext import CommandHandler, MessageHandler, RegexHandler, Filters
@@ -22,7 +22,7 @@ else:
 class AntiSpam:
     def __init__(self):
         self.whitelist = (
-            (DEV_USERS or [])+(INSPECTOR or [])+(REQUESTER or [])
+            (DEV_USERS).union(SUDOERS).union(GBANNERS)
         )
         # Values are HIGHLY experimental, its recommended you pay attention to our commits as we will be adjusting the values over time with what suits best.
         Duration.CUSTOM = 15  # Custom duration, 15 seconds
