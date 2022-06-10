@@ -15,9 +15,9 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-import InnexiaBot.Database.global_bans_sql as sql
-from InnexiaBot.Database.users_sql import get_user_com_chats
-from InnexiaBot import (
+import innexiaBot.Database.global_bans_sql as sql
+from innexiaBot.Database.users_sql import get_user_com_chats
+from innexiaBot import (
     DEV_USERS,
     EVENT_LOGS,
     OWNER_ID,
@@ -25,16 +25,16 @@ from InnexiaBot import (
     SUDOERS,
     dispatcher,
 )
-from InnexiaBot.Handlers.chat_status import (
+from innexiaBot.Handlers.chat_status import (
     is_user_admin,
     support_plus,
     user_admin,
 )
-from InnexiaBot.Handlers.extraction import (
+from innexiaBot.Handlers.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from InnexiaBot.Handlers.misc import send_to_list
+from innexiaBot.Handlers.misc import send_to_list
 
 GBAN_ENFORCE_GROUP = 6
 STRICT_GBAN = True

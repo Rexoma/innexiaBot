@@ -1,18 +1,18 @@
 # Module to blacklist users and prevent them from using commands by @TheRealPhoenix
 import html
-import InnexiaBot.Database.blacklistusers_sql as sql
-from InnexiaBot import (
+import innexiaBot.Database.blacklistusers_sql as sql
+from innexiaBot import (
     DEV_USERS,
     OWNER_ID,
     dispatcher,
 )
-from InnexiaBot import SUDOERS
-from InnexiaBot.Handlers.chat_status import dev_plus
-from InnexiaBot.Handlers.extraction import (
+from innexiaBot import SUDOERS
+from innexiaBot.Handlers.chat_status import dev_plus
+from innexiaBot.Handlers.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from InnexiaBot.modules.log_channel import gloggable
+from innexiaBot.modules.log_channel import gloggable
 from telegram import ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async

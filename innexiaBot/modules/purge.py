@@ -3,18 +3,18 @@ from telethon import events
 from telegram import Update
 from telegram.ext import CallbackContext, CommandHandler, run_async, Filters
 
-from InnexiaBot import telethn, dispatcher
-from InnexiaBot.Handlers.chat_status import (
+from innexiaBot import telethn, dispatcher
+from innexiaBot.Handlers.chat_status import (
     can_delete,
     user_admin,
     
 )
-from InnexiaBot.Handlers.telethon.chat_statuss import (
+from innexiaBot.Handlers.telethon.chat_statuss import (
     can_delete_messages,
     user_is_admin,   
 )
 
-import InnexiaBot.Database.purges_sql as sql
+import innexiaBot.Database.purges_sql as sql
 
 async def purge_messages(event):
     start = time.perf_counter()

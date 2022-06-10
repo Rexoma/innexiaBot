@@ -15,25 +15,25 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html, escape_markdown
 
-from InnexiaBot import dispatcher, LOGGER, DEV_USERS
-from InnexiaBot.modules.disable import DisableAbleCommandHandler
-from InnexiaBot.Handlers.managers import MessageHandlerChecker
-from InnexiaBot.Handlers.chat_status import user_admin
-from InnexiaBot.Handlers.extraction import extract_text
-from InnexiaBot.Handlers.filters import CustomFilters
-from InnexiaBot.Handlers.misc import build_keyboard_parser
-from InnexiaBot.Handlers.msg_types import get_filter_type
-from InnexiaBot.Handlers.string_handling import (
+from innexiaBot import dispatcher, LOGGER, DEV_USERS
+from innexiaBot.modules.disable import DisableAbleCommandHandler
+from innexiaBot.Handlers.managers import MessageHandlerChecker
+from innexiaBot.Handlers.chat_status import user_admin
+from innexiaBot.Handlers.extraction import extract_text
+from innexiaBot.Handlers.filters import CustomFilters
+from innexiaBot.Handlers.misc import build_keyboard_parser
+from innexiaBot.Handlers.msg_types import get_filter_type
+from innexiaBot.Handlers.string_handling import (
     split_quotes,
     button_markdown_parser,
     escape_invalid_curly_brackets,
     markdown_to_html,
 )
-from InnexiaBot.Database import cust_filters_sql as sql
+from innexiaBot.Database import cust_filters_sql as sql
 
-from InnexiaBot.modules.connection import connected
+from innexiaBot.modules.connection import connected
 
-from InnexiaBot.Handlers.alternate import send_message, typing_action
+from innexiaBot.Handlers.alternate import send_message, typing_action
 
 HANDLER_GROUP = 10
 

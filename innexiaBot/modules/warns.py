@@ -3,25 +3,25 @@ import re
 from typing import Optional
 
 import telegram
-from InnexiaBot import  SUDOERS, dispatcher
-from InnexiaBot.modules.disable import DisableAbleCommandHandler
-from InnexiaBot.Handlers.chat_status import (
+from innexiaBot import  SUDOERS, dispatcher
+from innexiaBot.modules.disable import DisableAbleCommandHandler
+from innexiaBot.Handlers.chat_status import (
     bot_admin,
     can_restrict,
     is_user_admin,
     user_admin,
     user_admin_no_reply,
 )
-from InnexiaBot.Handlers.extraction import (
+from innexiaBot.Handlers.extraction import (
     extract_text,
     extract_user,
     extract_user_and_text,
 )
-from InnexiaBot.Handlers.filters import CustomFilters
-from InnexiaBot.Handlers.misc import split_message
-from InnexiaBot.Handlers.string_handling import split_quotes
-from InnexiaBot.modules. log_channel import loggable
-from InnexiaBot.Database import warns_sql as sql
+from innexiaBot.Handlers.filters import CustomFilters
+from innexiaBot.Handlers.misc import split_message
+from innexiaBot.Handlers.string_handling import split_quotes
+from innexiaBot.modules. log_channel import loggable
+from innexiaBot.Database import warns_sql as sql
 from telegram import (
     CallbackQuery,
     Chat,
@@ -43,7 +43,7 @@ from telegram.ext import (
     run_async,
 )
 from telegram.utils.helpers import mention_html
-from InnexiaBot.Database.approve_sql import is_approved
+from innexiaBot.Database.approve_sql import is_approved
 
 WARN_HANDLER_GROUP = 9
 CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"

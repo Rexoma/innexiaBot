@@ -6,18 +6,18 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
 
-import InnexiaBot.Database.blacklist_sql as sql
-from InnexiaBot import dispatcher, LOGGER
-from InnexiaBot.modules.disable import DisableAbleCommandHandler
-from InnexiaBot.Handlers.chat_status import user_admin, user_not_admin
-from InnexiaBot.Handlers.extraction import extract_text
-from InnexiaBot.Handlers.misc import split_message
-from InnexiaBot.modules.log_channel import loggable
-from InnexiaBot.modules.warns import warn
-from InnexiaBot.Handlers.string_handling import extract_time
-from InnexiaBot.modules.connection import connected
-from InnexiaBot.Database.approve_sql import is_approved
-from InnexiaBot.Handlers.alternate import send_message, typing_action
+import innexiaBot.Database.blacklist_sql as sql
+from innexiaBot import dispatcher, LOGGER
+from innexiaBot.modules.disable import DisableAbleCommandHandler
+from innexiaBot.Handlers.chat_status import user_admin, user_not_admin
+from innexiaBot.Handlers.extraction import extract_text
+from innexiaBot.Handlers.misc import split_message
+from innexiaBot.modules.log_channel import loggable
+from innexiaBot.modules.warns import warn
+from innexiaBot.Handlers.string_handling import extract_time
+from innexiaBot.modules.connection import connected
+from innexiaBot.Database.approve_sql import is_approved
+from innexiaBot.Handlers.alternate import send_message, typing_action
 
 BLACKLIST_GROUP = 11
 

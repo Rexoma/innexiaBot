@@ -1,9 +1,9 @@
 from typing import Optional
 
-import InnexiaBot.Database.rules_sql as sql
-from InnexiaBot import dispatcher
-from InnexiaBot.Handlers.chat_status import user_admin, connection_status
-from InnexiaBot.Handlers.string_handling import markdown_parser
+import innexiaBot.Database.rules_sql as sql
+from innexiaBot import dispatcher
+from innexiaBot.Handlers.chat_status import user_admin, connection_status
+from innexiaBot.Handlers.string_handling import markdown_parser
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,

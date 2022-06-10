@@ -17,15 +17,15 @@ from telegram import (
 )
 from telegram.ext import run_async, CallbackContext, CallbackQueryHandler
 
-from InnexiaBot import (
+from innexiaBot import (
     DEV_USERS,
     LOGGER,
     OWNER_ID,
     dispatcher,
 )
-from InnexiaBot import SUDOERS as REQUESTER
-from InnexiaBot.modules.disable import DisableAbleCommandHandler
-from InnexiaBot.Handlers.chat_status import (
+from innexiaBot import SUDOERS as REQUESTER
+from innexiaBot.modules.disable import DisableAbleCommandHandler
+from innexiaBot.Handlers.chat_status import (
     bot_admin,
     can_restrict,
     connection_status,
@@ -37,9 +37,9 @@ from InnexiaBot.Handlers.chat_status import (
     user_admin_no_reply,
     can_delete,
 )
-from InnexiaBot.Handlers.extraction import extract_user_and_text
-from InnexiaBot.Handlers.string_handling import extract_time
-from InnexiaBot.modules.log_channel import gloggable, loggable
+from innexiaBot.Handlers.extraction import extract_user_and_text
+from innexiaBot.Handlers.string_handling import extract_time
+from innexiaBot.modules.log_channel import gloggable, loggable
 
 
  
@@ -79,7 +79,7 @@ def ban(update: Update, context: CallbackContext) -> str:
             message.reply_text("I can't act against our own.")
         elif user_id in REQUESTER:
             message.reply_text(
-                "Bring an order from InnexiaBot Management to fight a Sudo User."
+                "Bring an order from innexiaBot Management to fight a Sudo User."
             )
         else:
             message.reply_text("This user has immunity and cannot be banned.")

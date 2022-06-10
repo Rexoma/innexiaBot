@@ -5,10 +5,10 @@ from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Upda
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import CommandHandler, CallbackQueryHandler, run_async
 
-import InnexiaBot.Database.connection_sql as sql
-from InnexiaBot import dispatcher, INSPECTOR, DEV_USERS
-from InnexiaBot.Handlers import validation
-from InnexiaBot.Handlers.alternate import send_message, typing_action
+import innexiaBot.Database.connection_sql as sql
+from innexiaBot import dispatcher, INSPECTOR, DEV_USERS
+from innexiaBot.Handlers import validation
+from innexiaBot.Handlers.alternate import send_message, typing_action
 
 user_admin = validation.user_admin
 
@@ -390,7 +390,7 @@ def connect_button(update, context):
 __mod_name__ = "Connect"
 
 __help__ = """
-Sometimes, you just want to add some notes and filters to a group chat, but you don't want everInnexiaBot to see; This is where connections come in...
+Sometimes, you just want to add some notes and filters to a group chat, but you don't want ever innexiaBot to see; This is where connections come in...
 This allows you to connect to a chat's database, and add things to it without the commands appearing in chat! For obvious reasons, you need to be an admin to add things; but any member in the group can view your data.
  ‣ `/connect`: Connects to chat (Can be done in a group by /connect or /connect <chat id> in PM)
  ‣ `/connection`: List connected chats

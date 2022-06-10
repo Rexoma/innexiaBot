@@ -1,20 +1,20 @@
 import html
 from typing import Optional
 
-from InnexiaBot import LOGGER, SUDOERS, dispatcher
-from InnexiaBot.Handlers.chat_status import (
+from innexiaBot import LOGGER, SUDOERS, dispatcher
+from innexiaBot.Handlers.chat_status import (
     bot_admin,
     can_restrict,
     connection_status,
     is_user_admin,
     user_admin,
 )
-from InnexiaBot.Handlers.extraction import (
+from innexiaBot.Handlers.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from InnexiaBot.Handlers.string_handling import extract_time
-from InnexiaBot.modules.log_channel import loggable
+from innexiaBot.Handlers.string_handling import extract_time
+from innexiaBot.modules.log_channel import loggable
 from telegram import Bot, Chat, ChatPermissions, ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async

@@ -5,26 +5,26 @@ import time
 from contextlib import suppress
 from functools import partial
 
-import InnexiaBot
-import InnexiaBot.Database.welcome_sql as sql
-import InnexiaBot.Database.global_bans_sql as gban_sql
-from InnexiaBot import (
+import innexiaBot
+import innexiaBot.Database.welcome_sql as sql
+import innexiaBot.Database.global_bans_sql as gban_sql
+from innexiaBot import (
  DEV_USERS, SUDOERS, JOIN_LOGGER, LOGGER,
     OWNER_ID, dispatcher
 )
-from InnexiaBot.Handlers.chat_status import (
+from innexiaBot.Handlers.chat_status import (
     is_user_ban_protected, user_admin, connection_status,
 )
-from InnexiaBot.Handlers.misc import (
+from innexiaBot.Handlers.misc import (
     build_keyboard,
     revert_buttons,
 )
-from InnexiaBot.Handlers.msg_types import get_welcome_type
-from InnexiaBot.Handlers.string_handling import (
+from innexiaBot.Handlers.msg_types import get_welcome_type
+from innexiaBot.Handlers.string_handling import (
     escape_invalid_curly_brackets, markdown_parser,
 )
-from InnexiaBot.modules.log_channel import loggable
-from InnexiaBot.Database.global_bans_sql import is_user_gbanned
+from innexiaBot.modules.log_channel import loggable
+from innexiaBot.Database.global_bans_sql import is_user_gbanned
 from telegram import (
     ChatPermissions, InlineKeyboardButton,
     InlineKeyboardMarkup, ParseMode, Update,
@@ -156,9 +156,9 @@ def new_member(update: Update, context: CallbackContext):
 
     for new_mem in new_members:
 
-        if new_mem.id == bot.id and not InnexiaBot.ALLOW_CHATS:
+        if new_mem.id == bot.id and not innexiaBot.ALLOW_CHATS:
             with suppress(BadRequest):
-                update.effective_message.reply_text(f"I cant join more groups now due to increasing userbase and load.\nAdd my friend @PATRICIA_ROBOT instead\n • Same InnexiaBot Code\n • Same Support\n • Same Updates channel\n\nPowered by @ReXomaSupport")
+                update.effective_message.reply_text(f"I cant join more groups now due to increasing userbase and load.\nAdd my friend @PATRICIA_ROBOT instead\n • Same innexiaBot Code\n • Same Support\n • Same Updates channel\n\nPowered by @ReXomaSupport")
             bot.leave_chat(update.effective_chat.id)
             return
 
@@ -658,7 +658,7 @@ def welcome(update: Update, context: CallbackContext):
         elif args[0].lower() in ("off", "no"):
             sql.set_welc_preference(str(chat.id), False)
             update.effective_message.reply_text(
-                "I'll go loaf around and not welcome anInnexiaBot then.",
+                "I'll go loaf around and not welcome aninnexiaBot then.",
             )
 
         else:

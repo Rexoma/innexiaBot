@@ -9,20 +9,20 @@ from telegram.utils.helpers import mention_html
 
 from alphabet_detector import AlphabetDetector
 
-import InnexiaBot.Database.locks_sql as sql
-from InnexiaBot import dispatcher, SUDOERS, LOGGER
-from InnexiaBot.modules.disable import DisableAbleCommandHandler
-from InnexiaBot.Handlers.chat_status import (
+import innexiaBot.Database.locks_sql as sql
+from innexiaBot import dispatcher, SUDOERS, LOGGER
+from innexiaBot.modules.disable import DisableAbleCommandHandler
+from innexiaBot.Handlers.chat_status import (
     can_delete,
     is_user_admin,
     user_not_admin,
     is_bot_admin,
     user_admin,
 )
-from InnexiaBot.modules.log_channel import loggable
-from InnexiaBot.modules.connection import connected
-from InnexiaBot.Database.approve_sql import is_approved
-from InnexiaBot.Handlers.alternate import send_message, typing_action
+from innexiaBot.modules.log_channel import loggable
+from innexiaBot.modules.connection import connected
+from innexiaBot.Database.approve_sql import is_approved
+from innexiaBot.Handlers.alternate import send_message, typing_action
 
 ad = AlphabetDetector()
 
@@ -295,7 +295,7 @@ def unlock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = f"Unlocked {ltype} for everInnexiaBot in {chat_name}!"
+                    text = f"Unlocked {ltype} for everinnexiaBot in {chat_name}!"
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
@@ -306,7 +306,7 @@ def unlock(update, context) -> str:
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
                     chat_name = update.effective_message.chat.title
-                    text = f"Unlocked {ltype} for everInnexiaBot!"
+                    text = f"Unlocked {ltype} for everinnexiaBot!"
                 sql.update_lock(chat.id, ltype, locked=False)
                 send_message(update.effective_message, text, parse_mode="markdown")
                 return (
@@ -327,7 +327,7 @@ def unlock(update, context) -> str:
                     chat = dispatcher.bot.getChat(conn)
                     chat_id = conn
                     chat_name = chat.title
-                    text = f"Unlocked {ltype} for everInnexiaBot in {chat_name}!"
+                    text = f"Unlocked {ltype} for everinnexiaBot in {chat_name}!"
                 else:
                     if update.effective_message.chat.type == "private":
                         send_message(
@@ -338,7 +338,7 @@ def unlock(update, context) -> str:
                     chat = update.effective_chat
                     chat_id = update.effective_chat.id
                     chat_name = update.effective_message.chat.title
-                    text = f"Unlocked {ltype} for everInnexiaBot!"
+                    text = f"Unlocked {ltype} for everinnexiaBot!"
 
                 can_change_info = chat.get_member(context.bot.id).can_change_info
                 if not can_change_info:

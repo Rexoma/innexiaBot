@@ -3,14 +3,14 @@ from io import BytesIO
 import random
 from typing import Optional
 
-import InnexiaBot.Database.notes_sql as sql
-from InnexiaBot import LOGGER, JOIN_LOGGER, SUPPORT_CHAT, dispatcher, SUDOERS
-from InnexiaBot.modules.disable import DisableAbleCommandHandler
-from InnexiaBot.Handlers.managers import MessageHandlerChecker
-from InnexiaBot.Handlers.chat_status import user_admin, connection_status
-from InnexiaBot.Handlers.misc import build_keyboard, revert_buttons
-from InnexiaBot.Handlers.msg_types import get_note_type
-from InnexiaBot.Handlers.string_handling import (
+import innexiaBot.Database.notes_sql as sql
+from innexiaBot import LOGGER, JOIN_LOGGER, SUPPORT_CHAT, dispatcher, SUDOERS
+from innexiaBot.modules.disable import DisableAbleCommandHandler
+from innexiaBot.Handlers.managers import MessageHandlerChecker
+from innexiaBot.Handlers.chat_status import user_admin, connection_status
+from innexiaBot.Handlers.misc import build_keyboard, revert_buttons
+from innexiaBot.Handlers.msg_types import get_note_type
+from innexiaBot.Handlers.string_handling import (
     escape_invalid_curly_brackets,
 )
 from telegram import (
