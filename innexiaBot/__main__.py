@@ -290,7 +290,7 @@ def error_callback(update: Update, context: CallbackContext):
         # handle all other telegram related errors
 
 
-
+@run_async
 def help_button(update, context):
     query = update.callback_query
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
@@ -472,7 +472,7 @@ def get_help(update: Update, context: CallbackContext):
     else:
         send_help(chat.id, HELP_STRINGS)
 
-
+@run_async
 def send_settings(chat_id, user_id, user=False):
     if user:
         if USER_SETTINGS:
@@ -664,7 +664,7 @@ def donate(update: Update, context: CallbackContext):
                 "Contact me in PM first to get donation information."
             )
 
-
+@run_async
 def migrate_chats(update: Update, context: CallbackContext):
     msg = update.effective_message  # type: Optional[Message]
     if msg.migrate_to_chat_id:
