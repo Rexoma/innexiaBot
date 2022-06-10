@@ -11,10 +11,10 @@ from telegram.ext import (
     run_async,
 )
 
-import InnexiaBot.Database.users_sql as sql
-from InnexiaBot import DEV_USERS, LOGGER, OWNER_ID, dispatcher
-from InnexiaBot.Handlers.chat_status import dev_plus, sudo_plus
-from InnexiaBot.Database.users_sql import get_all_users
+import innexiaBot.Database.users_sql as sql
+from innexiaBot import DEV_USERS, LOGGER, OWNER_ID, dispatcher
+from innexiaBot.Handlers.chat_status import dev_plus, sudo_plus
+from innexiaBot.Database.users_sql import get_all_users
 
 USERS_GROUP = 4
 CHAT_GROUP = 5
