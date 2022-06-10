@@ -1,7 +1,7 @@
 import threading
 
-from Innexia import dispatcher
-from Innexia.Database import BASE, SESSION
+from innexiaBot import dispatcher
+from innexiaBot.Database import BASE, SESSION
 from sqlalchemy import (
     Column,
     ForeignKey,
