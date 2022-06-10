@@ -6,7 +6,7 @@ from telegram.error import BadRequest, Unauthorized
 from telegram.ext import CommandHandler, CallbackQueryHandler, run_async
 
 import innexiaBot.Database.connection_sql as sql
-from innexiaBot import dispatcher, INSPECTOR, DEV_USERS
+from innexiaBot import dispatcher, SUDOERS as INSPECTOR, DEV_USERS
 from innexiaBot.Handlers import validation
 from innexiaBot.Handlers.alternate import send_message, typing_action
 
