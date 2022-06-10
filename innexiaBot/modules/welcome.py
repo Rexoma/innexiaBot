@@ -221,7 +221,7 @@ def new_member(update: Update, context: CallbackContext):
                     f"{html.escape(chat.title)}\n"
                     f"#USER_JOINED\n"
                     f"Bot SUDOERS just joined the group"
-                
+                ) 
                 continue
 
           
