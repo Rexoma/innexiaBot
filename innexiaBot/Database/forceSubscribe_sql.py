@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Numeric, Boolean
-from Innexia.Database import BASE, SESSION
+from innexiaBot.Database import BASE, SESSION
 
 
 class forceSubscribe(BASE):
