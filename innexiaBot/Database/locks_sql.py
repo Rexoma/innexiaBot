@@ -2,7 +2,7 @@ import threading
 
 from sqlalchemy import Column, String, Boolean
 
-from Innexia.Database import SESSION, BASE
+from innexiaBot.Database import SESSION, BASE
 
 
 class Permissions(BASE):
