@@ -3,7 +3,7 @@ import threading
 
 from sqlalchemy import func, distinct, Column, String, UnicodeText, BigInteger
 
-from InnexiaBot.Database import SESSION, BASE
+from innexiaBot.Database import SESSION, BASE
 
 
 class BlackListFilters(BASE):
