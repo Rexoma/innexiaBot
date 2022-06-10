@@ -2,7 +2,7 @@ import threading
 
 from sqlalchemy import Column, String, UnicodeText, distinct, func, Integer
 
-from Innexia.Database import BASE, SESSION
+from innexiaBot.Database import BASE, SESSION
 
 
 class StickersFilters(BASE):
