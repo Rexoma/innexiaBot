@@ -68,6 +68,6 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
     PORT = PORT
     URL = URL
 
-updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
+updater = tg.Updater(bot_token=TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient(MemorySession(), API_ID, API_HASH)
 dispatcher = updater.dispatcher
