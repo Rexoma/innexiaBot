@@ -2,8 +2,8 @@ import threading
 
 from datetime import datetime
 
-from InnexiaBot.Database import BASE, SESSION
-from InnexiaBot import LOGGER as log
+from innexiaBot.Database import BASE, SESSION
+from innexiaBot import LOGGER as log
 from sqlalchemy import Boolean, Column, BigInteger, UnicodeText, DateTime
 
 
