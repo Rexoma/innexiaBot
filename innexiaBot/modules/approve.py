@@ -1,11 +1,11 @@
 import html
-from InnexiaBot.modules.disable import DisableAbleCommandHandler
-from InnexiaBot import dispatcher, INSPECTOR
-from InnexiaBot.Handlers.extraction import extract_user
+from innexiaBot.modules.disable import DisableAbleCommandHandler
+from innexiaBot import dispatcher, INSPECTOR
+from innexiaBot.Handlers.extraction import extract_user
 from telegram.ext import CallbackContext, run_async, CallbackQueryHandler
-import InnexiaBot.Database.approve_sql as sql
-from InnexiaBot.Handlers.chat_status import user_admin 
-from InnexiaBot.modules.log_channel import loggable 
+import innexiaBot.Database.approve_sql as sql
+from innexiaBot.Handlers.chat_status import user_admin 
+from innexiaBot.modules.log_channel import loggable 
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update
 from telegram.utils.helpers import mention_html
 from telegram.error import BadRequest
