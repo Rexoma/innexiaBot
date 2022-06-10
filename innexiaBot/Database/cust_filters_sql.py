@@ -4,8 +4,8 @@ from sqlalchemy import Column, String, UnicodeText, Boolean, distinct, func
 from sqlalchemy.sql.sqltypes import BigInteger
 
 
-from Innexia.modules.helper_funcs.msg_types import Types
-from Innexia.Database import BASE, SESSION
+from innexiaBot.Handlers.msg_types import Types
+from innexiaBot.Database import BASE, SESSION
 
 
 class CustomFilters(BASE):
