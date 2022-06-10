@@ -3,6 +3,7 @@ import telegram.ext as tg
 from telethon.sessions import MemorySession
 from telethon import TelegramClient
 from config import TOKEN, WORKERS, API_ID, API_HASH
+from config import *
 
 StartTime = time.time()
 
@@ -23,7 +24,7 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
     )
     quit(1)
 
-    from config import *
+    
 
     TOKEN = TOKEN
     try:
@@ -62,7 +63,7 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
 # REQUIRED VARS TO BRIDGE BOT AND SERVER
 
     WORKERS = WORKERS
-    ALLOW_EXCL=ALLOW_EXCL
+    ALLOW_EXCL = ALLOW_EXCL
     WEBHOOK = WEBHOOK
     CERT_PATH = CERT_PATH
     PORT = PORT
