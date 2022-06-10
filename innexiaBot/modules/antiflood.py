@@ -4,15 +4,15 @@ import re
 
 from telegram import Message, Chat, Update, User, ChatPermissions
 
-from InnexiaBot import DEV_USERS as INSPECTOR,SUDOERS as REQUESTER, dispatcher
-from InnexiaBot.Handlers.chat_status import (
+from innexiaBot import DEV_USERS as INSPECTOR, SUDOERS as REQUESTER, dispatcher
+from innexiaBot.Handlers.chat_status import (
     bot_admin,
     is_user_admin,
     user_admin,
     user_admin_no_reply,
 )
-from InnexiaBot.modules.log_channel import loggable
-from InnexiaBot.Database import antiflood_sql as sql
+from innexiaBot.modules.log_channel import loggable
+from innexiaBot.Database import antiflood_sql as sql
 from telegram.error import BadRequest
 from telegram.ext import (
     CallbackContext,
@@ -23,10 +23,10 @@ from telegram.ext import (
     run_async,
 )
 from telegram.utils.helpers import mention_html
-from InnexiaBot.Handlers.string_handling import extract_time
-fromInnexiaBot.modules.connection import connected
-from Yone.Handlers.alternate import send_message
-from Yone.Database.approve_sql import is_approved
+from innexiaBot.Handlers.string_handling import extract_time
+from innexiaBot.modules.connection import connected
+from innexiaBot.Handlers.alternate import send_message
+from innexiaBot.Database.approve_sql import is_approved
 
 FLOOD_GROUP = 3
 
