@@ -1,24 +1,17 @@
-# All rights reserved.
-
-from innexiaBot import LOAD, LOGGER, NO_LOAD
+from innexiaBot import LOAD, NO_LOAD, LOGGER
+import sys
 
 
 def __list_all_modules():
+    from os.path import dirname, basename, isfile
     import glob
-    from os.path import basename, dirname, isfile
-    import os
-    path =r'./Yone/Plugins/'
-    list_of_files = []
 
-    for root, dirs, files in os.walk(path):
-        for file in files:
-            list_of_files.append(os.path.join(root,file))
-# This generates a list of modules in this folder for the * in __help__ to work.
-
+    # This generates a list of modules in this folder for the * in __main__ to work.
+    mod_paths = glob.glob(dirname(__file__) + "/*.py")
     all_modules = [
-        basename(name)[:-3]
-        for name in list_of_files
-        if isfile(name) and name.endswith(".py") and not name.endswith("__init__.py")
+        basename(f)[:-3]
+        for f in mod_paths
+        if isfile(f) and f.endswith(".py") and not f.endswith("__init__.py")
     ]
 
     if LOAD or NO_LOAD:
@@ -28,8 +21,8 @@ def __list_all_modules():
                 any(mod == module_name for module_name in all_modules)
                 for mod in to_load
             ):
-                LOGGER.error("Invalid loadorder names. Quitting.")
-                quit(1)
+                LOGGER.error("[Charlotte] Invalid loadorder names. Quitting.")
+                sys.exit(1)
 
             all_modules = sorted(set(all_modules) - set(to_load))
             to_load = list(all_modules) + to_load
@@ -38,7 +31,7 @@ def __list_all_modules():
             to_load = all_modules
 
         if NO_LOAD:
-            LOGGER.info(f"Not loading: {NO_LOAD}")
+            LOGGER.info("[Charlotte] Not loading: {}".format(NO_LOAD))
             return [item for item in to_load if item not in NO_LOAD]
 
         return to_load
@@ -47,5 +40,5 @@ def __list_all_modules():
 
 
 ALL_MODULES = __list_all_modules()
-LOGGER.info("Modules to load: %s", str(ALL_MODULES))
+LOGGER.info("[Charlotte] Modules to load: %s", str(ALL_MODULES))
 __all__ = ALL_MODULES + ["ALL_MODULES"]
