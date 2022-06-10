@@ -1,4 +1,4 @@
-from InnexiaBot import DEV_USERS, SUDOERS
+from innexiaBot import DEV_USERS, SUDOERS
 from telegram import Message
 from telegram.ext import MessageFilter
 
