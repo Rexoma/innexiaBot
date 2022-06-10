@@ -1,6 +1,6 @@
-import InnexiaBot.Database.blacklistusers_sql as sql
-from InnexiaBot import ALLOW_EXCL
-from InnexiaBot import DEV_USERS, SUDOERS
+import innexiaBot.Database.blacklistusers_sql as sql
+from innexiaBot import ALLOW_EXCL
+from innexiaBot import DEV_USERS, SUDOERS
 from itertools import chain
 from telegram import Update
 from telegram.ext import CommandHandler, MessageHandler, RegexHandler, Filters
