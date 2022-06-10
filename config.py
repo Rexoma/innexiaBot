@@ -23,6 +23,7 @@ INFOPIC = bool(os.environ.get("INFOPIC", True))
 OWNER_ID = int(os.environ.get("OWNER_ID", None))
 DEV_USERS = {int(x) for x in os.environ.get("DEV_USERS", "").split()}
 SUDOERS = {int(x) for x in os.environ.get("SUDOERS", "").split()}
+GBANNERS = {int(x) for x in os.environ.get("GBANNERS", "").split()}
 TOKEN = os.environ.get("TOKEN", None)
 DONATION_LINK = os.environ.get("DONATION_LINK", None)
 
