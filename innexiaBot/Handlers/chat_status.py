@@ -1,5 +1,6 @@
+
 from telegram import Chat, ChatMember, Update, ParseMode
-from innexiaBot import SUDOERS, DEV_USERS, DEL_CMDS, SUPPORT_CHAT, GBANNERS as REQUESTER, dispatcher
+from innexiaBot import SUDOERS as INSPECTOR, GBANNERS as REQUESTER, DEV_USERS, DEL_CMDS, SUPPORT_CHAT, dispatcher
 from threading import RLock
 from cachetools import TTLCache
 from time import perf_counter
@@ -14,15 +15,15 @@ THREAD_LOCK = RLock()
 
 
 def is_whitelist_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
-    return any(user_id in user for user in [ SUDOERS, DEV_USERS])
+    return any(user_id in user for user in [ REQUESTER, INSPECTOR, DEV_USERS])
 
 
 def is_support_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
-    return user_id in REQUESTER or user_id in SUDOERS or user_id in DEV_USERS
+    return user_id in REQUESTER or user_id in INSPECTOR or user_id in DEV_USERS
 
 
 def is_sudo_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
-    return user_id in DEV_USERS
+    return user_id in INSPECTOR or user_id in DEV_USERS
 
 
 def fuck_channel(update:Update, user_id: int, member: ChatMember = None) -> bool:
@@ -35,7 +36,8 @@ def fuck_channel(update:Update, user_id: int, member: ChatMember = None) -> bool
 def is_user_admin(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
     if (
         chat.type == "private"
-        or user_id in SUDOERS        
+        or user_id in INSPECTOR
+        or user_id in REQUESTER
         or chat.all_members_are_administrators
         or user_id in [777000, 1087968824]
     ) and fuck_channel:  # Count telegram and Group Anonymous as admin
@@ -76,8 +78,8 @@ def can_delete(chat: Chat, bot_id: int) -> bool:
 def is_user_ban_protected(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
     if (
         chat.type == "private"
-        or user_id in SUDOERS
-        or user_id in DEV_USERS
+        or user_id in INSPECTOR
+        or user_id in REQUESTER
         or chat.all_members_are_administrators
         or user_id in [777000, 1087968824]
     ) and fuck_channel:  # Count telegram and Group Anonymous as admin
@@ -249,9 +251,9 @@ def bot_admin(func):
         message_chat_title = update.effective_message.chat.title
 
         if update_chat_title == message_chat_title:
-            not_admin = "I'm not admin! - SAD🌝"
+            not_admin = "I'm not admin! - REEEEEE"
         else:
-            not_admin = f"I'm not admin in <b>{update_chat_title}</b>! - SAD🌝"
+            not_admin = f"I'm not admin in <b>{update_chat_title}</b>! - REEEEEE"
 
         if is_bot_admin(chat, bot.id):
             return func(update, context, *args, **kwargs)
