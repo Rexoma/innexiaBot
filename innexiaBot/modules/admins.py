@@ -5,9 +5,9 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CallbackQueryHandler, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
-from InnexiaBot import SUDOERS as INSPECTOR, dispatcher
-from InnexiaBot.modules.disable import DisableAbleCommandHandler
-from InnexiaBot.Handlers.chat_status import (
+from innexiaBot import SUDOERS as INSPECTOR, dispatcher
+from innexiaBot.modules.disable import DisableAbleCommandHandler
+from innexiaBot.Handlers.chat_status import (
     bot_admin,
     can_pin,
     can_promote,
@@ -17,12 +17,12 @@ from InnexiaBot.Handlers.chat_status import (
     ADMIN_CACHE,
 )
 
-from InnexiaBot.Handlers.extraction import (
+from innexiaBot.Handlers.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from InnexiaBot.modules.log_channel import loggable
-from InnexiaBot.Handlers.alternate import send_message, typing_action
+from innexiaBot.modules.log_channel import loggable
+from innexiaBot.Handlers.alternate import send_message, typing_action
 
 
 
