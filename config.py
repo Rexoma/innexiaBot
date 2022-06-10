@@ -23,4 +23,5 @@ DEL_CMDS = bool(os.environ.get("DEL_CMDS", True))
 INFOPIC = bool(os.environ.get("INFOPIC", True))
 OWNER_ID = int(os.environ.get("OWNER_ID", None))
 TOKEN = os.environ.get("TOKEN", None)
+DONATION_LINK = os.environ.get("DONATION_LINK", None)
 
