@@ -297,9 +297,6 @@ def help_button(update, context):
     prev_match = re.match(r"help_prev\((.+?)\)", query.data)
     next_match = re.match(r"help_next\((.+?)\)", query.data)
     back_match = re.match(r"help_back", query.data)
-
-    print(query.message.chat.id)
-
     try:
         if mod_match:
             module = mod_match.group(1)
@@ -309,12 +306,15 @@ def help_button(update, context):
                 )
                 + HELPABLE[module].__help__
             )
-            query.message.edit_text(
+            query.message.edit_text( 
                 text=text,
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="BACK", callback_data="help_back")]]
+                    [ 
+                      [InlineKeyboardButton(text="Back", callback_data="help_back")]
+                        
+                    ]
                 ),
             )
 
@@ -353,7 +353,6 @@ def help_button(update, context):
 
     except BadRequest:
         pass
-
 
 @run_async
 def innexia_about_callback(update, context):
