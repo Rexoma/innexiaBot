@@ -3,13 +3,13 @@ import html
 from datetime import datetime
 import humanize
 
-from InnexiaBot import dispatcher
-from InnexiaBot.modules.disable import (
+from innexiaBot import dispatcher
+from innexiaBot.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
-from InnexiaBot.Database import afk_sql as sql, disable_sql
-from InnexiaBot.modules.users import get_user_id
+from innexiaBot.Database import afk_sql as sql, disable_sql
+from innexiaBot.modules.users import get_user_id
 from telegram import MessageEntity, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, Filters, MessageHandler, run_async

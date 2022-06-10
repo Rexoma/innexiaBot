@@ -9,7 +9,7 @@ from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from InnexiaBot import (
+from innexiaBot import (
     DEV_USERS,
     OWNER_ID,
     TOKEN,
@@ -17,14 +17,14 @@ from InnexiaBot import (
     INFOPIC,
     dispatcher,
 )
-from InnexiaBot.__main__ import STATS, USER_INFO
-import InnexiaBot.Database.userinfo_sql as sql
-from InnexiaBot.modules.disable import DisableAbleCommandHandler
-from InnexiaBot.Database.global_bans_sql import is_user_gbanned
-from InnexiaBot.Database.afk_sql import is_afk, check_afk_status
-from InnexiaBot.Database.users_sql import get_user_num_chats
-from InnexiaBot.Handlers.chat_status import sudo_plus, user_admin, support_plus
-from InnexiaBot.Handlers.extraction import extract_user
+from innexiaBot.__main__ import STATS, USER_INFO
+import innexiaBot.Database.userinfo_sql as sql
+from innexiaBot.modules.disable import DisableAbleCommandHandler
+from innexiaBot.Database.global_bans_sql import is_user_gbanned
+from innexiaBot.Database.afk_sql import is_afk, check_afk_status
+from innexiaBot.Database.users_sql import get_user_num_chats
+from innexiaBot.Handlers.chat_status import sudo_plus, user_admin, support_plus
+from innexiaBot.Handlers.extraction import extract_user
 
 def no_by_per(totalhp, percentage):
     """
@@ -295,14 +295,14 @@ def info(update: Update, context: CallbackContext):
         text += "\n┣|• This User Is My 'Creator'."
         disaster_level_present = True
     elif user.id in DEV_USERS:
-        text += "\n┣|• This user is member of 'InnexiaBot Developer Team'."
+        text += "\n┣|• This user is member of 'innexiaBot Developer Team'."
         disaster_level_present = True
     elif user.id in SUDOERS:
         text += "\n┣|• This person is my SUDOERS."
         disaster_level_present = True
 
     if disaster_level_present:
-        text += ' [<a href="https://t.me/InnexiaBot_Updates">?</a>]'.format(
+        text += ' [<a href="https://t.me/innexiaBot_Updates">?</a>]'.format(
             bot.username
         )
 
@@ -559,7 +559,7 @@ Examples:
  ‣ `/ginfo`*:* get information about a Group. 
  
 *What is that health thingy?*
- Come and see [HP System explained](https://t.me/InnexiaBot_Updates)
+ Come and see [HP System explained](https://t.me/innexiaBot_Updates)
 """
 __mod_name__ = "Infos"
 __command_list__ = ["setbio", "bio", "setme", "me", "info"]

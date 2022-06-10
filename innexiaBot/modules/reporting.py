@@ -2,10 +2,10 @@ import html, re
 from typing import Optional
 
 
-from InnexiaBot import SUDOERS, LOGGER, dispatcher
-from InnexiaBot.Handlers.chat_status import user_admin, user_not_admin, is_user_admin
-from InnexiaBot.modules.log_channel import loggable
-from InnexiaBot.Database import reporting_sql as sql
+from innexiaBot import SUDOERS, LOGGER, dispatcher
+from innexiaBot.Handlers.chat_status import user_admin, user_not_admin, is_user_admin
+from innexiaBot.modules.log_channel import loggable
+from innexiaBot.Database import reporting_sql as sql
 from telegram import Chat, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update, User
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (
@@ -34,7 +34,7 @@ def report_setting(update: Update, context: CallbackContext):
             if args[0] in ("yes", "on"):
                 sql.set_user_setting(chat.id, True)
                 msg.reply_text(
-                    "Turned on reporting! You'll be notified whenever anInnexiaBot reports something."
+                    "Turned on reporting! You'll be notified whenever aninnexiaBot reports something."
                 )
 
             elif args[0] in ("no", "off"):
