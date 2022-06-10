@@ -16,8 +16,8 @@ from telegram import TelegramError
 from telegram.ext import run_async, CallbackContext, CallbackQueryHandler
 from telegram.utils.helpers import mention_html
 
-from InnexiaBot import dispatcher
-from InnexiaBot.modules.disable import DisableAbleCommandHandler
+from innexiaBot import dispatcher
+from innexiaBot.modules.disable import DisableAbleCommandHandler
 
 REDIS = ""
 combot_stickers_url = "https://combot.org/telegram/stickers?q="

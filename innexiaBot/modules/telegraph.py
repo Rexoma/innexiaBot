@@ -1,4 +1,4 @@
-from InnexiaBot import telethn as tbot
+from innexiaBot import telethn as tbot
 TMP_DOWNLOAD_DIRECTORY = "./"
 from telethon import events
 import os
