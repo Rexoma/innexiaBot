@@ -2,7 +2,7 @@ import logging, os, sys, time
 import telegram.ext as tg
 from telethon.sessions import MemorySession
 from telethon import TelegramClient
-
+from config import TOKEN
 
 StartTime = time.time()
 
