@@ -7,10 +7,10 @@ from telegram.ext import CommandHandler, CallbackQueryHandler, run_async
 
 import innexiaBot.Database.connection_sql as sql
 from innexiaBot import dispatcher, SUDOERS as INSPECTOR, DEV_USERS
-from innexiaBot.Handlers import validation
+from innexiaBot.Handlers import chat_status
 from innexiaBot.Handlers.alternate import send_message, typing_action
 
-user_admin = validation.user_admin
+user_admin = chat_status.user_admin
 
 
 @user_admin
