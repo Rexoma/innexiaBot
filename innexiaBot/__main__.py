@@ -4,7 +4,7 @@ import re
 from sys import argv
 from typing import Optional
 
-from innexiaBot import (
+from Innexia import (
     ALLOW_EXCL,
     CERT_PATH,
     DONATION_LINK,
@@ -19,15 +19,14 @@ from innexiaBot import (
     dispatcher,
     StartTime,
     telethn,
-    pbot,
     updater,
 )
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from innexiaBot.modules import ALL_MODULES
-from innexiaBot.modules.helper_funcs.chat_status import is_user_admin
-from innexiaBot.modules.helper_funcs.misc import paginate_modules
+from Innexia.modules import ALL_MODULES
+from Innexia.Handlers.chat_status import is_user_admin
+from Innexia.Handlers.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import (
     BadRequest,
@@ -74,41 +73,49 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-`Heya` 🤗 `I am` **PATRICIA** `your group super bot`
-`I am very fast and  more efficient  I provide awesome  features which a owner will look for  filter ,warn system,note keeping system flood!`
-"""
+ʜᴇʏ ᴛʜᴇʀᴇ ɪ ᴀᴍ **{}** 
+
+ ᴀɴ ᴀɴɪᴍᴇ ᴛʜᴇᴍᴇᴅ ᴀᴅᴠᴀɴᴄᴇ ɢʀᴏᴜp ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ ᴀ ʟᴏᴛ ᴏғ sᴘᴇᴄɪᴀʟɪᴛʏ.
+
+ ➖➖➖➖➖➖➖➖➖➖➖➖➖
+
+ I have lots of handy features such as:
+‣ Warning system
+‣ Artificial intelligence
+‣ Flood control system
+‣ Note keeping system
+‣ Filters keeping system
+‣ Approvals and much more.
+‣ Managed By @RexomaSupport.
+
+ ➖➖➖➖➖➖➖➖➖➖➖➖➖
+
+ ➛ᴛʀʏ ᴛʜᴇ /help ʙᴜᴛᴛᴏɴs ʙᴇʟᴏᴡ ᴛᴏ ᴋɴᴏᴡ ᴍʏ ᴀʙɪʟɪᴛɪᴇs ××."""
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="Fᴜɴᴄᴛɪᴏɴs📚", callback_data="help_back"),
+            text="Help & Commands", callback_data="help_back"),
     ],
     [
-        InlineKeyboardButton(text="Sᴜᴩᴩᴏʀᴛ⚠️", url=f"https://t.me/TGBOTSXD"),
+        InlineKeyboardButton(text="👥 Group", url=f"https://t.me/RexomaSupport"),
         InlineKeyboardButton(
-            text="Uᴩᴅᴀᴛᴇs🔔", url=f"https://t.me/TGBOTZXD"
+            text="Channel 🔔", url=f"https://t.me/RexomaUpdate"
         ),
     ],
     [
-        InlineKeyboardButton(text="Dᴇᴛᴀɪʟs🗞️", callback_data="innexia_"),
-        InlineKeyboardButton(
-            text="Gʙᴀɴ-Lᴏɢs⏱️", url=f"https://t.me/PATRICIA_LOGS"
-        ),
-    ],
-    [
-        InlineKeyboardButton(text="💕 Sᴜᴍᴍᴏɴ Mᴇ 💕", url="http://t.me/PATRICIA_ROBOT?startgroup=true"),
+        InlineKeyboardButton(text="➕Add Me To Your Chat➕", url="https://t.me/InnexiaBot?startgroup=true"),
     ],
 ]
 
 
 HELP_STRINGS = """
-**SETTINGS**
-`Click on the buttons below to get documentation about specific modules..`)"""
+Hey there! My name is Innexia.\n\n I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of the things I can help you with.\n\n ✪ Click on the button bellow to get description about specifics command. ✪ \n\nㅤ» ᴍᴀɪɴ ᴄᴏᴍᴍᴀɴᴅꜱ «\n\n➲ /start : ꜱᴛᴀʀᴛꜱ ᴍᴇ | ᴀᴄᴄᴏʀᴅɪɴɢ ᴛᴏ ᴍᴇ ʏᴏᴜ'ᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴅᴏɴᴇ ɪᴛ​.\n➲ /donate : sᴜᴘᴘᴏʀᴛ ᴍᴇ ʙʏ ᴅᴏɴᴀᴛɪɴɢ ꜰᴏʀ ᴍʏ ʜᴀʀᴅᴡᴏʀᴋ​.\n➲ /help  : ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ ꜱᴇᴄᴛɪᴏɴ.\n ‣ ɪɴ ᴘᴍ : ᴡɪʟʟ ꜱᴇɴᴅ ʏᴏᴜ ʜᴇʟᴘ​ ꜰᴏʀ ᴀʟʟ ꜱᴜᴘᴘᴏʀᴛᴇᴅ ᴍᴏᴅᴜʟᴇꜱ.\n ‣ ɪɴ ɢʀᴏᴜᴘ : ᴡɪʟʟ ʀᴇᴅɪʀᴇᴄᴛ ʏᴏᴜ ᴛᴏ ᴘᴍ, ᴡɪᴛʜ ᴀʟʟ ᴛʜᴀᴛ ʜᴇʟᴘ​ ᴍᴏᴅᴜʟᴇꜱ."""
 
 
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
- @PiroXpower 's 💕"""
+ @ReXomaSupport """
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -121,7 +128,7 @@ CHAT_SETTINGS = {}
 USER_SETTINGS = {}
 
 for module_name in ALL_MODULES:
-    imported_module = importlib.import_module("innexiaBot.modules." + module_name)
+    imported_module = importlib.import_module("Innexia.modules." + module_name)
     if not hasattr(imported_module, "__mod_name__"):
         imported_module.__mod_name__ = imported_module.__name__
 
@@ -193,7 +200,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="⬅️ BACK", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="BACK", callback_data="help_back"), InlineKeyboardButton(text="HOME", callback_data="innexia_back")]]
                     ),
                 )
 
@@ -218,7 +225,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+            "👋 I'm already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
@@ -307,7 +314,7 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="BACK", callback_data="help_back")]]
                 ),
             )
 
@@ -353,27 +360,21 @@ def innexia_about_callback(update, context):
     query = update.callback_query
     if query.data == "innexia_":
         query.message.edit_text(
-            text=""" **PATRICIA** it's online since 29 March 2021 and it's constantly updated!
-            \n**Bot Admins**
-            
-            \n• @PIROXPOWER, bot creator and main developer.
-            \n• The Doctor, server manager and developer.
-            \n• Manuel 5, developer.
-            \n**Support**
-            \n• [Click here](t.me/PATRICIA_SUPPORT) to consult the updated list of Official Supporters of the bot.
-            \n• Thanks to all our **donors** for supporting server and development expenses and all those who have reported bugs or suggested new features.
-            \n• We also thank **all the groups** who rely on our Bot for this service, we hope you will always like it: we are constantly working to improve it!""",
+            text=""" <b> Hey there! My name is Innexia.
+I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of the things I can help you with.
+✪ Click on the button bellow to get description about specifics command. ✪
+ㅤㅤㅤㅤㅤㅤ» ᴍᴀɪɴ ᴄᴏᴍᴍᴀɴᴅꜱ «
+➲ /start : ꜱᴛᴀʀᴛꜱ ᴍᴇ | ᴀᴄᴄᴏʀᴅɪɴɢ ᴛᴏ ᴍᴇ ʏᴏᴜ'ᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴅᴏɴᴇ ɪᴛ​.
+➲ /donate : sᴜᴘᴘᴏʀᴛ ᴍᴇ ʙʏ ᴅᴏɴᴀᴛɪɴɢ ꜰᴏʀ ᴍʏ ʜᴀʀᴅᴡᴏʀᴋ​.
+➲ /help  : ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ ꜱᴇᴄᴛɪᴏɴ.
+  ‣ ɪɴ ᴘᴍ : ᴡɪʟʟ ꜱᴇɴᴅ ʏᴏᴜ ʜᴇʟᴘ​ ꜰᴏʀ ᴀʟʟ ꜱᴜᴘᴘᴏʀᴛᴇᴅ ᴍᴏᴅᴜʟᴇꜱ.
+  ‣ ɪɴ ɢʀᴏᴜᴘ : ᴡɪʟʟ ʀᴇᴅɪʀᴇᴄᴛ ʏᴏᴜ ᴛᴏ ᴘᴍ, ᴡɪᴛʜ ᴀʟʟ ᴛʜᴀᴛ ʜᴇʟᴘ​ ᴍᴏᴅᴜʟᴇꜱ. <b>""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Back", callback_data="innexia_back"),
-                    InlineKeyboardButton(text="Help", callback_data="help_back"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Credit", url="https://t.me/Patricia_credits"),
-                    InlineKeyboardButton(text="Support", url="t.me/patricia_support"),
+                    InlineKeyboardButton(text="Back", callback_data="innexia_back")
                  ]
                 ]
             ),
@@ -393,25 +394,13 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text=""" Hi..😻 I'm *Patricia*
-            \n• Here Is The List For Developers..
-            \n• Owner Of Bot [BLAZE](T.ME/PIROXPOWER)
-            \n• Manuel 5, developers,They Are:-
-            \n• @imLucif3r
-            \n• @DEVILDAD_PRINCE
-            \n• @useIes 
-            \n• @Itz_oxiOp 
-            \n• @its_broken_18
-            \n• Thanks To All Developers Supporters And Dev's,
-            \n• If you Like Our Bot Then You Can Donate Or You Can 
-            \n• Support Us By Giving Ideas. For More Quary Join @PATRICIA_SUPPORT.""",
+            text=""" SOON .""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Back", callback_data="source_back"),
-                    InlineKeyboardButton(text="Support", url="t.me/tgbotsXD"),
+                    InlineKeyboardButton(text="Go Back", callback_data="source_back")
                  ]
                 ]
             ),
@@ -468,7 +457,7 @@ def get_help(update: Update, context: CallbackContext):
     elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
         module = args[1].lower()
         text = (
-            "【Hᴇʟᴩ Fᴏʀ *{}* Mᴏᴅᴜʟᴇ 】:\n".format(
+            "Here is the available help for the *{}* module:\n".format(
                 HELPABLE[module].__mod_name__
             )
             + HELPABLE[module].__help__
@@ -700,7 +689,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "`Yes I'm Fine` 😹")
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", " 𝙱𝙰𝙲𝙺 𝙸𝙽 𝙰𝙲𝚃𝙸𝙾𝙽🔥")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
@@ -747,7 +736,7 @@ def main():
 
     else:
         LOGGER.info("Using long polling.")
-        updater.start_polling(timeout=15, read_latency=4, clean=True)
+        updater.start_polling(allowed_updates=Update.ALL_TYPES, timeout=15, read_latency=4, drop_pending_updates=True)
 
     if len(argv) not in (1, 3, 4):
         telethn.disconnect()
@@ -760,5 +749,4 @@ def main():
 if __name__ == "__main__":
     LOGGER.info("Successfully loaded modules: " + str(ALL_MODULES))
     telethn.start(bot_token=TOKEN)
-    pbot.start()
     main()
