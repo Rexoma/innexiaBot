@@ -1,9 +1,9 @@
 
 import os
 from time import sleep
-from InnexiaBot import OWNER_ID, dispatcher
-from InnexiaBot.Handlers.extraction import extract_user
-from InnexiaBot.Database.users_sql import get_user_com_chats
+from innexiaBot import OWNER_ID, dispatcher
+from innexiaBot.Handlers.extraction import extract_user
+from innexiaBot.Database.users_sql import get_user_com_chats
 from telegram import Update
 from telegram.error import BadRequest, RetryAfter, Unauthorized
 from telegram.ext import CallbackContext, CommandHandler, Filters
