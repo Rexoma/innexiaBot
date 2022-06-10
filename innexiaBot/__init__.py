@@ -62,7 +62,7 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
 # REQUIRED VARS TO BRIDGE BOT AND SERVER
 
     WORKERS = WORKERS
-    ALLOW_EXCL = ALLOW_EXCL
+    ALLOW_EXCL=ALLOW_EXCL
     WEBHOOK = WEBHOOK
     CERT_PATH = CERT_PATH
     PORT = PORT
