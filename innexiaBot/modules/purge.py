@@ -9,7 +9,7 @@ from innexiaBot.Handlers.chat_status import (
     user_admin,
     
 )
-from innexiaBot.Handlers.telethon.chat_statuss import (
+from innexiaBot.Handlers.telethon.permissions import (
     can_delete_messages,
     user_is_admin,   
 )
