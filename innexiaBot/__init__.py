@@ -35,6 +35,7 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
     JOIN_LOGGER = JOIN_LOGGER
     ALLOW_CHATS = ALLOW_CHATS
     try:
+        GBANNERS = set(int(x) for x in GBANNERS or [])
         SUDOERS = set(int(x) for x in SUDOERS or [])
         DEV_USERS = set(int(x) for x in DEV_USERS or [])
     except ValueError:
