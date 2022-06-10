@@ -1,4 +1,4 @@
-from InnexiaBot.Handlers.telethon import IMMUNE_USERS, telethn
+from innexiaBot.Handlers.telethon import IMMUNE_USERS, telethn
 from innexiaBot import SUDOERS as REQUESTER
 from telethon.tl.types import ChannelParticipantsAdmins
 
