@@ -1,6 +1,6 @@
 import html
 from innexiaBot.modules.disable import DisableAbleCommandHandler
-from innexiaBot import dispatcher, INSPECTOR
+from innexiaBot import dispatcher, GBANNERS as INSPECTOR
 from innexiaBot.Handlers.extraction import extract_user
 from telegram.ext import CallbackContext, run_async, CallbackQueryHandler
 import innexiaBot.Database.approve_sql as sql
