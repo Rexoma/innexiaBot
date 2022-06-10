@@ -2,8 +2,8 @@ import threading
 
 from sqlalchemy import String, Column, BigInteger, UnicodeText
 
-from InnexiaBot.Database import SESSION, BASE
-from InnexiaBot import LOGGER as log
+from innexiaBot.Database import SESSION, BASE
+from innexiaBot import LOGGER as log
 
 DEF_COUNT = 1
 DEF_LIMIT = 0
