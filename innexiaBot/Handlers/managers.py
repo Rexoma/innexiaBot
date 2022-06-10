@@ -1,6 +1,6 @@
 import innexiaBot.Database.blacklistusers_sql as sql
 from innexiaBot import ALLOW_EXCL
-from innexiaBot import DEV_USERS, SUDOERS as INSPECTOR, GBANNER as REQUESTER
+from innexiaBot import DEV_USERS, SUDOERS as INSPECTOR, GBANNERS as REQUESTER
 from itertools import chain
 from telegram import Update
 from telegram.ext import CommandHandler, MessageHandler, RegexHandler, Filters
