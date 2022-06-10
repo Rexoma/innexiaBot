@@ -4,7 +4,7 @@ from typing import Union
 
 from sqlalchemy import Column, String, Boolean, UnicodeText, BigInteger
 
-from Innexia.Database import SESSION, BASE
+from innexiaBot.Database import SESSION, BASE
 
 
 class ChatAccessConnectionSettings(BASE):
@@ -17,7 +17,7 @@ class ChatAccessConnectionSettings(BASE):
         self.allow_connect_to_chat = str(allow_connect_to_chat)
 
     def __repr__(self):
-        return "<Chat access settings ({}) is {}>".format(
+        return "<Chat settings ({}) is {}>".format(
             self.chat_id, self.allow_connect_to_chat
         )
 
